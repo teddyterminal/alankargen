@@ -157,7 +157,12 @@ def alankar(raag, n):
     return(shuffle(asc), shuffle(desc), 1)
 
 def shuffle(nl): 
-    
+    l = 1
+    for i in range(len(nl)): 
+        l *= len(nl[i])
+
+    if l > 100: 
+        return ([["Memory Overload"]])
     def shuffle_help(nl, so_far): 
         if len(nl) == 0: 
             return so_far
