@@ -21,7 +21,7 @@ def my_form_post():
         '.fa-anchor,.fa-coffee {font-size:200px}</style></head><body bgcolor = "FFBFAA"><center> <p></p><div style = "width: 50%; border: 1px solid #996955" id = "form" ><h1> Raag Alankar Generator',
         '</h1><form action="/" method="POST"><h3> Raag Name </h3><input type="text" name="text1"> <br/><h3> Alankar Number </h3>',
         '<input type="text" name="text2"> <br/> <br/> <input type="submit" name="my-form" value="Get Alankars"><p></p></form> </div></center>',
-        '<center><div style = "width: 50%; border: 1px solid #996955" id = "form" >'])
+        '<center><div style = "width: 50%; border: 1px solid #996955" id = "form" ><p></p>'])
 
     text1 = request.form['text1']
     text2 = request.form['text2']
@@ -29,15 +29,15 @@ def my_form_post():
     try: 
         asc, desc, comp = alankar.alankar(text1, int(text2))
     except:
-        output += "Invalid Input. </div></center></body></html>"
+        output += "Invalid Input. <p></p></div></center></body></html>"
         return output
 
     if comp == -1: 
-        output += str("Raag <strong>" + text1 + "</strong> not found" + "</div></center></body></html>")
+        output += str("Raag <strong>" + text1 + "</strong> not found" + "<p></p></div></center></body></html>")
         return output
     elif comp == 0:
         output += str("Raag <strong>" + text1 + "</strong> has an invalid aaroha/avroha in our database, given by <br/>" + str(asc) + "; <br/>" + 
-            str(desc) + "</div></center></body></html>")
+            str(desc) + "<p></p></div></center></body></html>")
         return output
 
     else: 
@@ -66,7 +66,7 @@ def my_form_post():
                 output += " "
             output += "<br/>"
 
-        output += "<br/>" + "</div></center></body></html>"
+        output += "<br/>" + "<p></p></div></center></body></html>"
 
         print(output)
         return output
