@@ -95,7 +95,7 @@ def my_form_post():
             for k in desc[i]: 
                 output += k 
                 output += " "
-            output += "</p>"
+            output += "</p><br/>"
 
         output += "<br/>" + "<p style = 'color:black'><em>Click any of the provided alankars to listen to them.</em></p><p></p></div></center></body></html>"
 
