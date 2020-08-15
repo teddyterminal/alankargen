@@ -30,7 +30,7 @@ def my_form_post():
         '<input type="text" name="text4" placeholder = "Speed"> <br/> <br/>',
         '<input type="submit" name="my-form" value="Get Alankars"><p></p></form> </div></center>',
         '<script src="../static/auto.js"></script>',
-        '<script src="static/simpleTones.js"></script>',
+        '<script src="../static/simpleTones.js"></script>',
         '<script> autocomplete(document.getElementById("auto"), raags); </script>',
         '<center><div style = "width:95%; border: 1px solid #996955" id = "form" ><p></p>'])
 
