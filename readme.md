@@ -4,6 +4,8 @@ This is the code base used to generate *alankars* in Hindustani classical music 
 
 Style sheet and autocomplete script credits should go to [W3 Schools](w3schools.com), and the Javascript for the sound generation is a variation of some excellent work from [Elliott Alexander](github.com/escottalexander). This application is made with Flask and Heroku, and is written primarily in Python. 
 
+Data credit should go to Swarganga.org's [Raagabase](https://www.swarganga.org/raagabase.php), available for free with an account. 
+
 ----
 
 Hindustani music differs from its Western counterpart primarily through its emphasis on melody, as opposed to harmony. As a result, artists and novice practitioners alike spend far more time on individual voice development, since the music is usually performed solo. More emphasis is placed on ornamentation, flexibility, and agility of the voice, whereas a western vocalist - especially a choir singer - may spend more time on blending and matching her voice to another singer from another part. 
@@ -73,4 +75,3 @@ The code base calculates and plays *alankars* for hundreds of *raags*, and also 
     avroha: SNDPMGR NDPMGRS
 
 
-    
