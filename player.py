@@ -18,7 +18,7 @@ def playstring(string, key, bpm, asc = True):
     for char in string: 
         n = numb[char]
         #print(asc, char, idx)
-        if asc and char.lower() == "n" and idx == 0: 
+        if asc and (char.lower() == "n" or char.lower() == "d") and (idx == 0 or idx == 1 or idx < len(string)/4): 
             n -= 12
         if asc and char == "S" and idx == len(string) - 1: 
             n = 12

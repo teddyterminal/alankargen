@@ -54,7 +54,7 @@ def my_form_post():
         asc, desc, comp = alankar.alankar(text1, int(text2))
         ps = player.playstring("".join(asc[0]), text3, int(text4), asc = True)
     except Exception as e:
-        print(e)
+        #print(e)
         output += "Invalid Input. <p></p></div></center></body></html>"
         return output
 
@@ -74,7 +74,7 @@ def my_form_post():
             output += "Raag <strong>" + text1 + "</strong> ascending Alankar " + text2 + ": <br/>"
 
         for i in range(len(asc)): 
-            print(asc[i])
+            #print(asc[i])
             playable = "".join(asc[i])
             ps = player.playstring(playable, text3, int(text4), asc = True)
             if ps is not None: 
@@ -107,7 +107,7 @@ def my_form_post():
 
         output += "<br/>" + "<p style = 'color:black'><em>Click any of the provided alankars to listen to them.</em></p><p></p></div></center></body></html>"
 
-        print(output)
+        #print(output)
         return output
 
 if __name__ == '__main__':
