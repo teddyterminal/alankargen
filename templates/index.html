@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="../static/auto.js"></script>
+<script src="../static/simpleTones.js"></script>
 <style>
 body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 .w3-bar,h1,button {font-family: "Montserrat", sans-serif}
@@ -24,10 +25,12 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 	<div style = "width: 95%; border: 1px solid #996955" id = "form" >
     <h1> Raag Alankar Generator  </h1>
     <form action="/" method="POST">
-    	<h3> Raag Name </h3>
-        <input id="auto" type="text" name="text1" placeholder = "Raag"> <br/>
-        <h3> Alankar Number </h3>
-        <input type="text" name="text2" placeholder = "Number"> <br/> <br/>
+    	<h3> Raag & Alankar Number </h3>
+        <input id="auto" type="text" name="text1" placeholder = "Raag"> 
+        <input type="text" name="text2" placeholder = "Number"> <br/>
+        <h3> Key and Speed (BPM) </h3>
+        <input type="text" name="text3" placeholder = "Key"> 
+        <input type="text" name="text4" placeholder = "Speed"> <br/> <br/>
         <input type="submit" name="my-form" value="Get Alankars"> <p></p>
     </form> 
 	</div></center>

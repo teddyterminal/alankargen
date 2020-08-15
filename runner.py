@@ -2,6 +2,7 @@ from flask import Flask
 from flask import request
 from flask import render_template
 import alankar
+import player
 
 app = Flask(__name__)
 
@@ -20,18 +21,29 @@ def my_form_post():
         '<style> body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif} .w3-bar,h1,button {font-family: "Montserrat", sans-serif}',
         '.fa-anchor,.fa-coffee {font-size:200px}</style></head><body bgcolor = "FFBFAA">',
         '<center> <p></p><div style = "width: 95%; border: 1px solid #996955" id = "form" ><h1> Raag Alankar Generator',
-        '</h1><form action="/" method="POST"><h3> Raag Name </h3><input id = "auto" type="text" name="text1" placeholder = "Raag"> <br/><h3> Alankar Number </h3>',
-        '<input type="text" name="text2" placeholder = "Number"> <br/> <br/> <input type="submit" name="my-form" value="Get Alankars"><p></p></form> </div></center>',
+        '</h1><form action="/" method="POST">',
+        '<h3> Raag & Alankar Number </h3>',
+        '<input id="auto" type="text" name="text1" placeholder = "Raag"> ', 
+        '<input type="text" name="text2" placeholder = "Number"> <br/>',
+        '<h3> Key and Speed (BPM) </h3>',
+        '<input type="text" name="text3" placeholder = "Key"> ', 
+        '<input type="text" name="text4" placeholder = "Speed"> <br/> <br/>',
+        '<input type="submit" name="my-form" value="Get Alankars"><p></p></form> </div></center>',
         '<script src="../static/auto.js"></script>',
+        '<script src="../static/simpleTones.js"></script>',
         '<script> autocomplete(document.getElementById("auto"), raags); </script>',
         '<center><div style = "width:95%; border: 1px solid #996955" id = "form" ><p></p>'])
 
     text1 = request.form['text1']
     text2 = request.form['text2']
+    text3 = request.form['text3']
+    text4 = request.form['text4']
 
     try: 
         asc, desc, comp = alankar.alankar(text1, int(text2))
-    except:
+        ps = player.playstring("".join(asc[0]), text3, int(text4), asc = True)
+    except Exception as e:
+        print(e)
         output += "Invalid Input. <p></p></div></center></body></html>"
         return output
 
@@ -51,10 +63,17 @@ def my_form_post():
             output += "Raag <strong>" + text1 + "</strong> ascending Alankar " + text2 + ": <br/>"
 
         for i in range(len(asc)): 
+            print(asc[i])
+            playable = "".join(asc[i])
+            ps = player.playstring(playable, text3, int(text4), asc = True)
+            if ps is not None: 
+                output += "\n<p onclick = " + ps + " style='display:inline'>"
+            else: 
+                output += "<p style='display:inline'>"
             for k in asc[i]: 
                 output += k 
                 output += " "
-            output += "<br/>"
+            output += "</p><br/>"
 
         output += "<br/>"
 
@@ -64,10 +83,16 @@ def my_form_post():
             output += "Raag <strong>" + text1 + "</strong> descending Alankar " + text2 + ": <br/>"
 
         for i in range(len(desc)): 
+            playable = "".join(desc[i])
+            ps = player.playstring(playable, text3, int(text4), asc = False)
+            if ps is not None: 
+                output += "<p onclick = " + ps + " style='display:inline'>"
+            else: 
+                output += "<p style='display:inline'>"
             for k in desc[i]: 
                 output += k 
                 output += " "
-            output += "<br/>"
+            output += "</p><br/>"
 
         output += "<br/>" + "<p></p></div></center></body></html>"
 
