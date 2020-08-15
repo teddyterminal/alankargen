@@ -18,7 +18,6 @@ def my_form_post():
     text3 = request.form['text3']
     text4 = request.form['text4']
 
-    print(text1)
 
     output = "".join(["<!DOCTYPE html> <html lang='en'> <head> <meta charset='UTF-8'> <meta name='viewport' content='width=device-width, initial-scale=1'>",
         '<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">',
@@ -32,11 +31,19 @@ def my_form_post():
         '</h1><form action="/" method="POST">',
         '<h3> Raag & Alankar Number </h3>',
         '<input id="auto" type="text" name="text1" placeholder = "Raag" value = "' + str(text1) + '"> ', 
-        '<input type="text" name="text2" placeholder = "Number" value = "' + str(text2) + '"> <br/>',
-        '<h3> Key and Speed (BPM) </h3>',
-        '<input type="text" name="text3" placeholder = "Key" value = "' + str(text3) + '"> ', 
-        '<input type="text" name="text4" placeholder = "Speed" value = "' + str(text4) + '"> <br/> <br/>',
-        '<input type="submit" name="my-form" value="Get Alankars"><p></p></form> </div></center>',
+        '<input type="number" name="text2" placeholder = "Number" min = "1" max = "15" value = "' + str(text2) + '"> <br/>',
+        '<h3> Key and Speed (BPM) </h3> <select name="text3">'])
+
+
+    for option in ["A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#"]: 
+        if text3 == option: 
+            output += '<option value = "' + option + '" selected>' + option + '</option>'
+        else: 
+            output += '<option value = "' + option + '">' + option + '</option>'
+            
+    output += "".join([
+        '<input type="number" name="text4" placeholder = "Speed" min = "10" max = "500" value = "' + str(text4) + '"> <br/> <br/>',
+        '<input type="submit" name="my-form" value="Get Alankars"> <input type="reset" value = "Last Query"><p></p></form> </div></center>',
         '<script src="../static/auto.js"></script>',
         '<script src="../static/simpletones.js"></script>',
         '<script> autocomplete(document.getElementById("auto"), raags); </script>',
