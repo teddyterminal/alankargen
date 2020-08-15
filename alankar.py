@@ -153,7 +153,6 @@ def alankar(raag, n):
 
             desc.append(cv)
     
-    print(shuffle(asc), shuffle(desc))   
     return(shuffle(asc), shuffle(desc), 1)
 
 def shuffle(nl): 

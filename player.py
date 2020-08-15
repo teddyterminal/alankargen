@@ -30,12 +30,12 @@ def playstring(string, key, bpm, asc = True):
         freqs.append(ks*2**(n/12))
         idx += 1
     
-    l = 60/bpm*len(freqs)
+    l = 30/bpm*len(freqs)
 
     output = "\"playSound(\'sine\', " + str(freqs[0]) + "," + str(l)
     
     idx = 1
-    l = 60/bpm
+    l = 30/bpm
 
     for k in freqs[1:]: 
         output += ", " + str(k) + ", " + str(l*idx) 
