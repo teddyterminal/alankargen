@@ -24,18 +24,17 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 	<center> 
 	<p></p>
 	<div style = "width: 95%; border: 1px solid #996955" id = "form" >
-    <h1> Raag Alankar Generator  </h1>
+    <h1> Raag Alankar Generator</h1>
     <form action="/" method="POST">
-    	<h3> Raag & Alankar Number </h3>
-        <input id="auto" type="text" name="text1" placeholder = "Raag"> 
-        <input type="number" name="text2" placeholder = "#" min = "1" max = "15"> <br/>
-        <h3> Key and Speed (BPM) </h3>
-        <select name="text3" placeholder = "Key"> <option value = "A">A </option> 
-        <option value = "A#">A#</option> <option value = "B">B</option> <option value = "C">C</option> 
-    	<option value = "C#">C#</option> <option value = "D">D</option> <option value = "D#">D#</option> 
-		<option value = "E">E</option> <option value = "F">F</option> <option value = "F">F#</option> 
-		<option value = "G">G </option> <option value = "G#">G# </option></select>
-        <input type="number" name="text4" placeholder = "B/M" min = "10" max = "500"> <br/> <br/>
+    	<table> <tr>
+    	<td> <label> <strong> Raag: </strong> </label> </td> <td> <input id="auto" type="text" name="text1" placeholder = "Raag"> </td> </tr> 
+        <tr> <td> <label> <strong> Number: </strong> </label> </td> <td> <input type="number" name="text2" placeholder = "#" min = "1" max = "15"> </td></tr>
+        <tr> <td> <label> <strong> Key: </strong> </label> </td> <td> <select name="text3" placeholder = "Key"> 
+        <option value = "A">A </option> <option value = "A#">A#</option> <option value = "B">B</option> 
+        <option value = "C">C</option> <option value = "C#">C#</option> <option value = "D">D</option> 
+        <option value = "D#">D#</option> <option value = "E">E</option> <option value = "F">F</option> 
+        <option value = "F">F#</option> <option value = "G">G </option> <option value = "G#">G# </option></select> </td></tr>
+        <tr> <td> <label> <strong> Speed: </strong> </label> </td><td> <input type="number" name="text4" placeholder = "B/M" min = "10" max = "500"> </td> </tr> </table><br/> 
         <input type="submit" name="my-form" value="Get Alankars"> <input type="reset" value = "Last Query"> <p></p>
     </form> 
 	</div></center>
