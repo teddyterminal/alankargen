@@ -54,8 +54,10 @@ def my_form_post():
         asc, desc, comp = alankar.alankar(text1, int(text2))
         ps = player.playstring("".join(asc[0]), text3, int(text4), asc = True)
     except Exception as e:
-        #print(e)
-        output += "Invalid Input. <p></p></div></center></body></html>"
+        print(e)
+        output += "Invalid Input. <p></p></div></center>"
+        output += '<center><div style = "width: 75%;" id = "notes"><p style = "font-size:8px;"> <em>The majority of Raags are vakra - that is, they do not have a very direct Aaroha and Avroha. These Raags are marked in <span style = "color:#AA0000"> red </span>, and the algorithm will for some lengths of alankar return "Memory Overload" reflecting too many different permutations to compute. Raags marked in <span style = "color:#996600"> yellow </span> will always return, but 50 or more potential alankars might be returned. Raags in black are known to have a maximum of 10 different options for each length. Don\'t consider the returned alankars in the vakra Raags as gospel - they are, at best, the beginnings of the development of a palta. </em></p>'
+        output += '</div></center></body></html>'
         return output
 
     if comp == -1: 
@@ -63,7 +65,9 @@ def my_form_post():
         return output
     elif comp == 0:
         output += str("Raag <strong>" + text1 + "</strong> has an invalid aaroha/avroha in our database, given by <br/>" + str(asc) + "; <br/>" + 
-            str(desc) + "<p></p></div></center></body></html>")
+            str(desc) + "<p></p></div></center>")
+        output +=  '<center><div style = "width: 75%;" id = "notes"><p style = "font-size:8px;"> <em>The majority of Raags are vakra - that is, they do not have a very direct Aaroha and Avroha. These Raags are marked in <span style = "color:#AA0000"> red </span>, and the algorithm will for some lengths of alankar return "Memory Overload" reflecting too many different permutations to compute. Raags marked in <span style = "color:#996600"> yellow </span> will always return, but 50 or more potential alankars might be returned. Raags in black are known to have a maximum of 10 different options for each length. Don\'t consider the returned alankars in the vakra Raags as gospel - they are, at best, the beginnings of the development of a palta. </em></p>'
+        output += '</div></center></body></html>'
         return output
 
     else: 
