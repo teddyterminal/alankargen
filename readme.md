@@ -1,8 +1,8 @@
 # Hindustani Music - Raag *Alankar* Generation
 
-This is the code base used to generate *alankars* in Hindustani classical music based on rules of individual *raags*, or modes, of music. The live website is available at [alankargen.herokuapp.com](alankargen.herokuapp.com) and should be usable through any device with a modern browser. 
+This is the code base used to generate *alankars* in Hindustani classical music based on rules of individual *raags*, or modes, of music. The live website is available at [alankargen.herokuapp.com](http://alankargen.herokuapp.com) and should be usable through any device with a modern browser. 
 
-Style sheet and autocomplete script credits should go to [W3 Schools](w3schools.com), and the Javascript for the sound generation is a variation of some excellent work from [Elliott Alexander](github.com/escottalexander). This application is made with Flask and Heroku, and is written primarily in Python. 
+Style sheet and autocomplete script credits should go to [W3 Schools](http://w3schools.com), and the Javascript for the sound generation is a variation of some excellent work from [Elliott Alexander](http://github.com/escottalexander). This application is made with Flask and Heroku, and is written primarily in Python. 
 
 Data credit should go to Swarganga.org's [Raagabase](https://www.swarganga.org/raagabase.php), available for free with an account. 
 
