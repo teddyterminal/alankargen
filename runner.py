@@ -26,11 +26,11 @@ def my_form_post():
         '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">',
         '<style> body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif} .w3-bar,h1,button {font-family: "Montserrat", sans-serif}',
         '.fa-anchor,.fa-coffee {font-size:200px}</style></head><body bgcolor = "FFBFAA">',
-        '<style> p {color: blue} p:hover {color: red} p:active {color: red}</style>',
+        '<style> #alankar {color: blue} #alankar:hover {color: red} </style>',
         '<center> <p></p><div style = "width: 95%; border: 1px solid #996955" id = "form" ><h1> Raag Alankar Generator',
         '</h1><form action="/" method="POST">',
         '<table> <tr>',
-        '<td> <label> <strong> Raag: </strong> </label> </td> <td> <input id="auto" type="text" name="text1" placeholder = "Raag" value = "' + text1 + '"> </td> </tr>', 
+        '<td> <label> <strong> Raag: </strong> </label> </td> <td> <input id="auto" autocomplete = "off" type="text" name="text1" placeholder = "Raag" value = "' + text1 + '"> </td> </tr>', 
         '<tr> <td> <label> <strong> Number: </strong> </label> </td> <td> <input type="number" name="text2" placeholder = "#" min = "1" max = "15" value = "' + text2 + '"> </td></tr>',
         '<tr> <td> <label> <strong> Key: </strong> </label> </td> <td> <select name="text3" placeholder = "Key">'])
 
@@ -78,9 +78,9 @@ def my_form_post():
             playable = "".join(asc[i])
             ps = player.playstring(playable, text3, int(text4), asc = True)
             if ps is not None: 
-                output += "\n<p onclick = " + ps + " style='display:inline'>"
+                output += "\n<p onclick = " + ps + " style='display:inline' id= 'alankar'>"
             else: 
-                output += "<p style='display:inline'>"
+                output += "<p id= 'alankar' style='display:inline'>"
             for k in asc[i]: 
                 output += k 
                 output += " "
@@ -97,15 +97,18 @@ def my_form_post():
             playable = "".join(desc[i])
             ps = player.playstring(playable, text3, int(text4), asc = False)
             if ps is not None: 
-                output += "<p onclick = " + ps + " style='display:inline'>"
+                output += "<p onclick = " + ps + " style='display:inline' id= 'alankar'>"
             else: 
-                output += "<p style='display:inline'>"
+                output += "<p style='display:inline' id= 'alankar'>"
             for k in desc[i]: 
                 output += k 
                 output += " "
             output += "</p><br/>"
 
-        output += "<br/>" + "<p style = 'color:black'><em>Click any of the provided alankars to listen to them.</em></p><p></p></div></center></body></html>"
+        output += "<br/>" + "<p style = 'color:black'><em>Click any of the provided alankars to listen to them.</em></p><p></p></div></center>"
+
+        output +=  '<center><div style = "width: 75%;" id = "notes"><p style = "font-size:8px;"> <em>The majority of Raags are vakra - that is, they do not have a very direct Aaroha and Avroha. These Raags are marked in <span style = "color:#AA0000"> red </span>, and the algorithm will for some lengths of alankar return "Memory Overload" reflecting too many different permutations to compute. Raags marked in <span style = "color:#996600"> yellow </span> will always return, but 50 or more potential alankars might be returned. Raags in black are known to have a maximum of 10 different options for each length. Don\'t consider the returned alankars in the vakra Raags as gospel - they are, at best, the beginnings of the development of a palta. </em></p>'
+        output += '</div></center></body></html>'
 
         #print(output)
         return output
