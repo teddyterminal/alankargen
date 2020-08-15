@@ -161,7 +161,7 @@ def shuffle(nl):
         l *= len(nl[i])
 
     if l > 100: 
-        return ([["Memory Overload"]])
+        return ([["Memory Overload (Gave " + str(l) + " Options)"]])
     def shuffle_help(nl, so_far): 
         if len(nl) == 0: 
             return so_far

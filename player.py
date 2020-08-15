@@ -12,7 +12,7 @@ def playstring(string, key, bpm, asc = True):
     
     idx = 0
 
-    if string == "Memory Overload": 
+    if len(string) >= 15 and string[:15] == "Memory Overload": 
         return None
 
     for char in string: 
