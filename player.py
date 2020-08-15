@@ -22,8 +22,10 @@ def playstring(string, key, bpm, asc = True):
             n -= 12
         if asc and char == "S" and idx == len(string) - 1: 
             n = 12
-        if not asc and (char == "S" or char.lower() == "r") and (idx == 0 or idx == 1 or idx < len(string)/2): 
+        if not asc and (char == "S" or char.lower() == "r") and (idx == 0 or idx == 1 or idx < len(string)/4): 
             n += 12
+        if not asc and (char.lower() == "n") and (idx == len(string)-1 or idx == len(string) - 2 or idx > len(string)*3/4): 
+            n -= 12
         
         freqs.append(ks*2**(n/12))
         idx += 1

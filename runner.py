@@ -13,6 +13,13 @@ def my_form():
 @app.route('/', methods=['POST'])
 def my_form_post():
 
+    text1 = request.form['text1']
+    text2 = request.form['text2']
+    text3 = request.form['text3']
+    text4 = request.form['text4']
+
+    print(text1)
+
     output = "".join(["<!DOCTYPE html> <html lang='en'> <head> <meta charset='UTF-8'> <meta name='viewport' content='width=device-width, initial-scale=1'>",
         '<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">',
         '<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">',
@@ -20,24 +27,20 @@ def my_form_post():
         '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">',
         '<style> body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif} .w3-bar,h1,button {font-family: "Montserrat", sans-serif}',
         '.fa-anchor,.fa-coffee {font-size:200px}</style></head><body bgcolor = "FFBFAA">',
+        '<style> p {color: blue} p:hover {color: red} p:active {color: red}</style>',
         '<center> <p></p><div style = "width: 95%; border: 1px solid #996955" id = "form" ><h1> Raag Alankar Generator',
         '</h1><form action="/" method="POST">',
         '<h3> Raag & Alankar Number </h3>',
-        '<input id="auto" type="text" name="text1" placeholder = "Raag"> ', 
-        '<input type="text" name="text2" placeholder = "Number"> <br/>',
+        '<input id="auto" type="text" name="text1" placeholder = "Raag" value = "' + str(text1) + '"> ', 
+        '<input type="text" name="text2" placeholder = "Number" value = "' + str(text2) + '"> <br/>',
         '<h3> Key and Speed (BPM) </h3>',
-        '<input type="text" name="text3" placeholder = "Key"> ', 
-        '<input type="text" name="text4" placeholder = "Speed"> <br/> <br/>',
+        '<input type="text" name="text3" placeholder = "Key" value = "' + str(text3) + '"> ', 
+        '<input type="text" name="text4" placeholder = "Speed" value = "' + str(text4) + '"> <br/> <br/>',
         '<input type="submit" name="my-form" value="Get Alankars"><p></p></form> </div></center>',
         '<script src="../static/auto.js"></script>',
         '<script src="../static/simpletones.js"></script>',
         '<script> autocomplete(document.getElementById("auto"), raags); </script>',
         '<center><div style = "width:95%; border: 1px solid #996955" id = "form" ><p></p>'])
-
-    text1 = request.form['text1']
-    text2 = request.form['text2']
-    text3 = request.form['text3']
-    text4 = request.form['text4']
 
     try: 
         asc, desc, comp = alankar.alankar(text1, int(text2))
@@ -92,9 +95,9 @@ def my_form_post():
             for k in desc[i]: 
                 output += k 
                 output += " "
-            output += "</p><br/>"
+            output += "</p>"
 
-        output += "<br/>" + "<p></p></div></center></body></html>"
+        output += "<br/>" + "<p style = 'color:black'><em>Click any of the provided alankars to listen to them.</em></p><p></p></div></center></body></html>"
 
         print(output)
         return output
