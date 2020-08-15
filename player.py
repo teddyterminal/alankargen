@@ -1,4 +1,3 @@
-import pyaudio
 import numpy as np
 
 numf = {0: "S", 1: "r", 2: "R", 3: "g", 4: "G", 5: "m", 6: "M", 7: "P", 8: "d", 9: "D", 10: "n", 11: "N"}
@@ -43,36 +42,3 @@ def playstring(string, key, bpm, asc = True):
     output += ")\""
 
     return output
-
-
-
-def play(bpm, frequencies):
-    
-    p = pyaudio.PyAudio()
-
-    s = []
-    volume = 0.5     # range [0.0, 1.0]
-   
-    for f in frequencies: 
-        print(f)
-        fs = 44100       # sampling rate, Hz, must be integer
-        duration = 60/bpm * 4.0   # in seconds, may be float
-
-        # generate samples, note conversion to float32 array
-        samples = (np.sin(2*np.pi*np.arange(fs*duration)*f/fs)).astype(np.float32)
-        s.append(samples)
-
-
-    # for paFloat32 sample values must be in range [-1.0, 1.0]
-    stream = p.open(format=pyaudio.paFloat32,
-                    channels=1,
-                    rate=fs,
-                    output=True)
-    # play. May repeat with different volume values (if done interactively) 
-    for seq in s: 
-        stream.write(volume*seq.astype(np.float32))
-
-    stream.stop_stream()
-    stream.close()
-
-    p.terminate()
