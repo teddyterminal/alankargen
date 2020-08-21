@@ -17,6 +17,7 @@ def my_form_post():
     text2 = request.form['text2']
     text3 = request.form['text3']
     text4 = request.form['text4']
+    text5 = request.form.getlist('notation')
 
 
     output = "".join(["<!DOCTYPE html> <html lang='en'> <head> <meta charset='UTF-8'> <meta name='viewport' content='width=device-width, initial-scale=1'>",
@@ -43,7 +44,9 @@ def my_form_post():
 
     output += "".join([
         '</select> </td></tr>',
-        '<tr> <td> <label> <strong> Speed: </strong> </label> </td><td> <input type="number" name="text4" placeholder = "B/M" min = "10" max = "500" value = "' + text4 + '"> </td> </tr> </table><br/>', 
+        '<tr> <td> <label> <strong> Speed: </strong> </label> </td><td> <input type="number" name="text4" placeholder = "B/M" min = "10" max = "500" value = "' + text4 + '"> </td> </tr>', 
+        '<tr> <td> <input type="radio" id="indian" name="notation" value="indian"> <label for="indian">Indian Notation </label> </td>',
+        '<td> <input type="radio" id="solfege" name="notation" value="solfege"> <label for="solfege">Solfege Notation</label> </td> </tr> </table><br/>',
         '<input type="submit" name="my-form" value="Get Alankars"> <input type="reset" value = "Last Query"> <p></p></form></div></center>',
         '<script src="../static/auto.js"></script>',
         '<script src="../static/simpletones.js"></script>',
@@ -85,9 +88,9 @@ def my_form_post():
                 output += "\n<p onclick = " + ps + " style='display:inline' id= 'alankar'>"
             else: 
                 output += "<p id= 'alankar' style='display:inline'>"
-            for k in asc[i]: 
-                output += k 
-                output += " "
+            
+            output += transform(asc[i], text5)
+
             output += "</p><br/>"
 
         output += "<br/>"
@@ -104,9 +107,8 @@ def my_form_post():
                 output += "<p onclick = " + ps + " style='display:inline' id= 'alankar'>"
             else: 
                 output += "<p style='display:inline' id= 'alankar'>"
-            for k in desc[i]: 
-                output += k 
-                output += " "
+            output += transform(desc[i], text5)
+
             output += "</p><br/>"
 
         output += "<br/>" + "<p style = 'color:black'><em>Click any of the provided alankars to listen to them.</em></p><p></p></div></center>"
@@ -116,6 +118,34 @@ def my_form_post():
 
         #print(output)
         return output
+
+def transform(q, text): 
+    if len(text) == 0 or text[0] == "indian": 
+        return " ".join(q)
+
+    trans = {"S": "Do", "R": "Re", "r": "re", "G": "Mi", "g": "mi", "M": "Fa", "m": "fa", "P": "So", "D": "La", "d": "la", "N": "Ti", "n": "ti"}
+
+    ss = []
+
+    for j in q: 
+
+        s = ""
+        idx = 0
+
+        for i in j: 
+            if i in trans: 
+                s += trans[i]
+            else: 
+                s += i
+            if idx == len(j) - 1: 
+                pass
+            else: 
+                s += "-"
+            idx += 1
+
+        ss.append(s)
+
+    return ", ".join(ss)
 
 if __name__ == '__main__':
     app.run()
